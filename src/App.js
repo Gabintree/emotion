@@ -14,21 +14,21 @@ import { createContext } from 'react';
 const mockData = [
   {
     id:'mock1',
-    emotionId: 1,
+    date:new Date().getTime(),
     content:'mock1',
-    date:new Date().getTime() -1,
+    emotionId: 1,
   },
   {
     id:'mock2',
-    emotionId: 2,
+    date:new Date().getTime() + 86400000,    
     content:'mock2',
-    date:new Date().getTime() -2,
+    emotionId: 2,
   },
   {
     id:'mock3',
-    emotionId: 3,
+    date:new Date().getTime() - 86400000,
     content:'mock3',
-    date:new Date().getTime() -3,
+    emotionId: 3,
   },
 ];
 
@@ -82,13 +82,13 @@ function App() {
     dispatch({
       type: "CREATE",
       data:{
-        id:idRef.current++,
+        id:idRef.current,
         date,
         content,
         emotionId,
       }
     });
-    // idRef.current += 1;
+     idRef.current += 1;
   };
 
   const onUpdate = (id, date, content, emotionId) => {
